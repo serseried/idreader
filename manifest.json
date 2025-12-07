@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Passport and ID okur",
+  "version": "1.0",
+  "permissions": ["scripting", "tabs"],
+  "action": {
+    "default_title": "Passport and ID okur",
+    "default_popup": "test.html"
+  },
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["mrz-utils.js", "content.js"]
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["pagei.js"],
+      "world": "MAIN"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["pagei.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

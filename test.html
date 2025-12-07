@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ID & Passport Scanner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * { box-sizing: border-box; }
+        html, body { width: 480px; }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f6f7fb;
+            color: #1f2430;
+        }
+        main {
+            max-width: none;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 8px 10px;
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+        }
+        .input-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            align-items: center;
+        }
+        .input-panel input {
+            flex: 1;
+            height: 44px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #cfd4e3;
+            font-family: "Fira Code", Consolas, "Courier New", monospace;
+            font-size: 0.95rem;
+            background: #fdfdfd;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .input-panel input:focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        button.ghost {
+            background: transparent;
+            border: 1px solid #cfd4e3;
+        }
+        .status {
+            margin: 12px 0 0;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        .status[data-state="success"] { color: #15803d; }
+        .status[data-state="error"] { color: #dc2626; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 8px 4px;
+            border-bottom: 1px solid #eef1f7;
+        }
+        td:first-child {
+            font-weight: 600;
+            color: #374151;
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+<main>
+
+    <section class="input-panel">
+        <label for="scanInput">Scanner output</label>
+        <div class="input-row">
+            <input id="scanInput" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off">
+            <button id="clearButton" class="ghost">Clear</button>
+
+        </div>
+        <p id="statusMessage" class="status" aria-live="polite">Awaiting scan...</p>
+    </section>
+
+    <section class="results-panel">
+        <h2>Document</h2>
+        <table>
+            <tbody id="resultBody"></tbody>
+        </table>
+    </section>
+</main>
+
+<script src="mrz-utils.js"></script>
+<script src="test.js"></script>
+</body>
+</html>
